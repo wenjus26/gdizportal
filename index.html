@@ -2,394 +2,199 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  
-  <!-- SEO & Open Graph -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GDIZ Portal — Le portail numérique de l'écosystème industriel</title>
-  <meta name="description" content="GDIZ Portal est la porte d'entrée numérique unique de la Zone Industrielle de Glo-Djigbé (Zè-Bénin).">
-  <meta name="author" content="GDIZ Portal">
+  <meta name="description" content="GDIZ Portal — La plateforme numérique officielle de la Zone Industrielle de Glo-Djigbé.">
   <link rel="canonical" href="https://gdizportal.bj/">
-
-  <meta property="og:type" content="website">
   <meta property="og:url" content="https://gdizportal.bj/">
-  <meta property="og:title" content="GDIZ Portal — L'Écosystème Industriel de Référence">
-  <meta property="og:description" content="Plateforme numérique de l'écosystème industriel de Glo-Djigbé.">
+  <meta property="og:title" content="GDIZ Portal">
   <meta property="og:image" content="https://gdizportal.bj/assets/img/gdiz-logo.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="icon" type="image/png" href="assets/img/gdiz-logo.png">
 
-  <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Soft International Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gdiz-blue:   #302F7F;
+      --gdiz-yellow: #F0B310;
+      --gdiz-red:    #EF463B;
+      --gdiz-green:  #00A950;
+    }
+
+    html, body {
+      width: 100%; height: 100%;
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background: #ffffff;
+      color: #0F172A;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Subtle dot grid */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: radial-gradient(rgba(48,47,127,0.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    /* Full-screen centered flex container */
+    .screen {
+      position: relative; z-index: 1;
+      width: 100%; height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 2rem;
+      gap: 0;
+    }
+
+    /* Logo */
+    .logo {
+      width: 220px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Divider accent */
+    .accent-bar {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--gdiz-yellow), var(--gdiz-red));
+      margin-bottom: 1.75rem;
+    }
+
+    /* Headline */
+    h1 {
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      text-align: center;
+      line-height: 1.15;
+      color: var(--gdiz-blue);
+      margin-bottom: 1rem;
+    }
+
+    /* Sub-text */
+    p {
+      font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+      font-weight: 500;
+      color: #475569;
+      text-align: center;
+      max-width: 520px;
+      line-height: 1.6;
+      margin-bottom: 2.25rem;
+    }
+
+    /* CTA Button — sharp with offset shadow */
+    .btn-cta {
+      background: var(--gdiz-yellow);
+      color: #0F172A;
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      padding: 0.8rem 2.25rem;
+      border: 1.5px solid #0F172A;
+      box-shadow: 4px 4px 0px #0F172A;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.14s ease;
+    }
+
+    .btn-cta:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px #0F172A;
+      background: #f8c025;
+      color: #000;
+    }
+
+    /* Lang switcher — top right */
+    .lang-toggle {
+      position: fixed; top: 1.25rem; right: 1.5rem;
+      display: flex; border: 1px solid #CBD5E1;
+      font-size: 0.73rem; font-weight: 700; z-index: 10;
+    }
+
+    .lang-btn {
+      background: none; border: none;
+      padding: 4px 10px; cursor: pointer;
+      color: #64748B; transition: all 0.15s;
+    }
+
+    .lang-btn.active { background: var(--gdiz-blue); color: #fff; }
+
+    /* Footer line */
+    footer {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      padding: 0.6rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 0.7rem; color: #94A3B8;
+      border-top: 1px solid #E2E8F0;
+      background: #ffffff;
+    }
+
+    /* Mobile */
+    @media (max-width: 580px) {
+      html, body { overflow-y: auto; }
+      .screen { height: auto; min-height: 100vh; padding: 4rem 1.5rem 5rem; }
+      .logo { width: 180px; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Ambient Glowing Background -->
-  <div class="page-background">
-    <div class="ambient-orb orb-1"></div>
-    <div class="ambient-orb orb-2"></div>
-    <div class="bg-mesh-grid"></div>
+  <!-- Language Switcher -->
+  <div class="lang-toggle">
+    <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
   </div>
 
-  <!-- Master App Single-Screen Layout -->
-  <div class="portal-app-wrapper">
+  <!-- Single Screen -->
+  <div class="screen">
+    <img src="assets/img/gdiz-logo.png" alt="GDIZ Logo" class="logo">
 
-    <!-- 1. SOFT HEADER -->
-    <header class="site-header">
-      <a href="/" class="brand-container" title="GDIZ Portal">
-        <img src="assets/img/gdiz-logo.png" alt="GDIZ Logo" class="brand-logo">
-        <span class="brand-badge" data-i18n="brand_badge">PORTAL</span>
-      </a>
+    <div class="accent-bar"></div>
 
-      <!-- Pill Nav -->
-      <ul class="header-nav">
-        <li>
-          <button type="button" class="nav-pill-item" data-bs-toggle="modal" data-bs-target="#servicesModal">
-            <span data-i18n="nav_services">Services</span>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="nav-pill-item" data-bs-toggle="modal" data-bs-target="#ecosystemModal">
-            <span data-i18n="nav_ecosystem">Écosystème</span>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="nav-pill-item" data-bs-toggle="modal" data-bs-target="#aboutModal">
-            <span data-i18n="nav_about">À propos</span>
-          </button>
-        </li>
-      </ul>
+    <h1 id="title">Le portail numérique<br>de l'écosystème industriel</h1>
 
-      <!-- Controls -->
-      <div class="header-actions">
-        <div class="soft-lang-switch">
-          <button type="button" class="lang-btn active" data-lang="fr">FR</button>
-          <button type="button" class="lang-btn" data-lang="en">EN</button>
-        </div>
-        <button type="button" class="btn-soft-login" data-bs-toggle="modal" data-bs-target="#loginModal">
-          <i class="fa-solid fa-arrow-right-to-bracket"></i>
-          <span data-i18n="btn_login">Se connecter</span>
-        </button>
-      </div>
-    </header>
+    <p id="desc">Accédez aux services, démarches et opérations<br>de la Zone Industrielle de Glo-Djigbé.</p>
 
-    <!-- 2. HERO VIEWPORT -->
-    <main class="hero-viewport">
-      <div class="hero-grid">
-        
-        <!-- Left Content -->
-        <div class="hero-content-col">
-          <div class="status-pill-header">
-            <span class="pulse-dot-green"></span>
-            <span data-i18n="status_pill">Glo-Djigbé Industrial Zone • Portail Officiel</span>
-          </div>
-
-          <h1 class="hero-title">
-            <span data-i18n-title-part1>L'Écosystème Industriel </span>
-            <span class="highlight-gradient" data-i18n-title-highlight>de Référence</span>
-          </h1>
-
-          <p class="hero-subtitle" data-i18n="hero_desc">
-            La plateforme numérique unifiée pour accéder aux services, démarches et opérations de la Zone Industrielle de Glo-Djigbé.
-          </p>
-
-          <!-- Interactive Command / Quick Launch Bar -->
-          <div class="command-search-bar" data-bs-toggle="modal" data-bs-target="#servicesModal">
-            <div class="search-text">
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <span data-i18n="search_placeholder">Rechercher un service, une démarche ou un accès...</span>
-            </div>
-            <button type="button" class="btn-launch-pill">
-              <span data-i18n="btn_explore">Explorer</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
-          </div>
-
-          <!-- Action Buttons -->
-          <div class="hero-cta-group">
-            <button type="button" class="btn-soft-primary" data-bs-toggle="modal" data-bs-target="#servicesModal">
-              <span data-i18n="cta_primary">Accéder aux services</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
-            <button type="button" class="btn-soft-ghost" data-bs-toggle="modal" data-bs-target="#ecosystemModal">
-              <span data-i18n="cta_secondary">Découvrir la plateforme</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Right Visual: Interactive Glass Composition -->
-        <div class="hero-visual-col">
-          <div class="interactive-glass-stage">
-            
-            <div class="stage-top">
-              <div class="stage-logo-pill">
-                <i class="fa-solid fa-cubes-stacked text-primary"></i>
-                <span>GDIZ DIGITAL HUB</span>
-              </div>
-              <span class="stage-badge-secure">
-                <i class="fa-solid fa-shield-check me-1"></i>
-                <span data-i18n="status_secure">Système Sécurisé</span>
-              </span>
-            </div>
-
-            <!-- 4 Soft Interactive Service Cards -->
-            <div class="soft-cards-stack">
-              
-              <div class="soft-mini-card" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="entreprises">
-                <div class="d-flex align-items-center">
-                  <div class="card-icon-box"><i class="fa-solid fa-building-user"></i></div>
-                  <div class="card-details">
-                    <h6 class="card-title" data-i18n="c1_title">Entreprises & Investisseurs</h6>
-                    <span class="card-desc" data-i18n="c1_desc">Guichet unique & agréments</span>
-                  </div>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square card-arrow"></i>
-              </div>
-
-              <div class="soft-mini-card" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="logistique">
-                <div class="d-flex align-items-center">
-                  <div class="card-icon-box"><i class="fa-solid fa-truck-fast"></i></div>
-                  <div class="card-details">
-                    <h6 class="card-title" data-i18n="c2_title">Logistique & Port Sec</h6>
-                    <span class="card-desc" data-i18n="c2_desc">Fret, douanes & opérations</span>
-                  </div>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square card-arrow"></i>
-              </div>
-
-              <div class="soft-mini-card" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="documents">
-                <div class="d-flex align-items-center">
-                  <div class="card-icon-box"><i class="fa-solid fa-file-shield"></i></div>
-                  <div class="card-details">
-                    <h6 class="card-title" data-i18n="c3_title">Guichet & Documents</h6>
-                    <span class="card-desc" data-i18n="c3_desc">Certificats, quitus & formalités</span>
-                  </div>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square card-arrow"></i>
-              </div>
-
-              <div class="soft-mini-card" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="personnel">
-                <div class="d-flex align-items-center">
-                  <div class="card-icon-box"><i class="fa-solid fa-id-card-clip"></i></div>
-                  <div class="card-details">
-                    <h6 class="card-title" data-i18n="c4_title">Badges & Personnel</h6>
-                    <span class="card-desc" data-i18n="c4_desc">Accès sécurisé & conformité</span>
-                  </div>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square card-arrow"></i>
-              </div>
-
-            </div>
-
-            <div class="stage-footer">
-              <span><i class="fa-solid fa-location-dot me-1 text-danger"></i> Glo-Djigbé (Zè), Bénin</span>
-              <span class="font-monospace text-primary">● Plateforme Opérationnelle</span>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </main>
-
-    <!-- 3. SOFT BOTTOM SERVICE BAR (5 ITEMS) -->
-    <section class="service-bar-section">
-      <div class="service-pills-row">
-        
-        <div class="bottom-pill-item" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="entreprises">
-          <div class="bottom-pill-icon"><i class="fa-solid fa-industry"></i></div>
-          <div class="bottom-pill-text">
-            <span class="bottom-pill-title" data-i18n="p1_title">Entreprises</span>
-            <span class="bottom-pill-desc" data-i18n="p1_desc">Services dédiés</span>
-          </div>
-        </div>
-
-        <div class="bottom-pill-item" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="logistique">
-          <div class="bottom-pill-icon"><i class="fa-solid fa-truck"></i></div>
-          <div class="bottom-pill-text">
-            <span class="bottom-pill-title" data-i18n="p2_title">Logistique</span>
-            <span class="bottom-pill-desc" data-i18n="p2_desc">Transit & fret</span>
-          </div>
-        </div>
-
-        <div class="bottom-pill-item" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="personnel">
-          <div class="bottom-pill-icon"><i class="fa-solid fa-user-shield"></i></div>
-          <div class="bottom-pill-text">
-            <span class="bottom-pill-title" data-i18n="p3_title">Personnel</span>
-            <span class="bottom-pill-desc" data-i18n="p3_desc">Badges d'accès</span>
-          </div>
-        </div>
-
-        <div class="bottom-pill-item" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="documents">
-          <div class="bottom-pill-icon"><i class="fa-solid fa-file-lines"></i></div>
-          <div class="bottom-pill-text">
-            <span class="bottom-pill-title" data-i18n="p4_title">Documents</span>
-            <span class="bottom-pill-desc" data-i18n="p4_desc">Gestion & quitus</span>
-          </div>
-        </div>
-
-        <div class="bottom-pill-item" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="support">
-          <div class="bottom-pill-icon"><i class="fa-solid fa-headset"></i></div>
-          <div class="bottom-pill-text">
-            <span class="bottom-pill-title" data-i18n="p5_title">Support</span>
-            <span class="bottom-pill-desc" data-i18n="p5_desc">Assistance 24/7</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- 4. SOFT FOOTER -->
-    <footer class="site-footer">
-      <span data-i18n="footer_copy">© 2026 GDIZ Portal — Le portail numérique de l'écosystème industriel</span>
-      <span>Glo-Djigbé Industrial Zone • République du Bénin</span>
-    </footer>
-
+    <a href="#" class="btn-cta" onclick="alert('Plateforme en cours de déploiement.'); return false;">
+      <span id="cta">Accéder aux services</span>
+      <i class="fa-solid fa-arrow-right"></i>
+    </a>
   </div>
 
-  <!-- MODALS -->
+  <!-- Footer -->
+  <footer>
+    <span>© 2026 GDIZ Portal</span>
+    <span>Glo-Djigbé Industrial Zone • Zè-Bénin</span>
+  </footer>
 
-  <!-- Modal 1: Login Gateway -->
-  <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Espace d'authentification GDIZ</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body p-4">
-          <p class="text-secondary small mb-3">Sélectionnez votre profil d'accès sécurisé :</p>
-          
-          <div class="d-flex flex-column gap-2">
-            <a href="#" class="soft-mini-card p-3" onclick="alert('Portail en cours de déploiement.'); return false;">
-              <div class="d-flex align-items-center">
-                <div class="card-icon-box me-3"><i class="fa-solid fa-building"></i></div>
-                <div>
-                  <strong class="d-block text-dark">Espace Entreprises & Investisseurs</strong>
-                  <small class="text-muted">Démarches, agréments & fiscalité</small>
-                </div>
-              </div>
-              <i class="fa-solid fa-chevron-right text-muted"></i>
-            </a>
+  <script>
+    const texts = {
+      fr: {
+        title: 'Le portail numérique<br>de l\'écosystème industriel',
+        desc: 'Accédez aux services, démarches et opérations<br>de la Zone Industrielle de Glo-Djigbé.',
+        cta: 'Accéder aux services'
+      },
+      en: {
+        title: 'The digital gateway<br>to the industrial ecosystem',
+        desc: 'Access services, procedures and operations<br>at Glo-Djigbé Industrial Zone.',
+        cta: 'Access Services'
+      }
+    };
 
-            <a href="#" class="soft-mini-card p-3" onclick="alert('Portail en cours de déploiement.'); return false;">
-              <div class="d-flex align-items-center">
-                <div class="card-icon-box me-3"><i class="fa-solid fa-truck"></i></div>
-                <div>
-                  <strong class="d-block text-dark">Espace Logistique & Opérateurs</strong>
-                  <small class="text-muted">Port sec, transit douanier & fret</small>
-                </div>
-              </div>
-              <i class="fa-solid fa-chevron-right text-muted"></i>
-            </a>
-
-            <a href="#" class="soft-mini-card p-3" onclick="alert('Portail en cours de déploiement.'); return false;">
-              <div class="d-flex align-items-center">
-                <div class="card-icon-box me-3"><i class="fa-solid fa-id-badge"></i></div>
-                <div>
-                  <strong class="d-block text-dark">Espace Personnel & Visiteurs</strong>
-                  <small class="text-muted">Badges d'accès biométriques & autorisations</small>
-                </div>
-              </div>
-              <i class="fa-solid fa-chevron-right text-muted"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal 2: Services Explorer -->
-  <div class="modal fade" id="servicesModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Catalogue des Services Numériques</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body p-4">
-          <div class="row g-3">
-            <div class="col-md-6">
-              <div class="p-3 border rounded-4 h-100 bg-light">
-                <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-building me-2"></i>Entreprises & Investisseurs</h6>
-                <p class="small text-secondary mb-0">Guichet unique d'implantation, suivi des agréments, facilitations douanières et déclarations fiscales.</p>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="p-3 border rounded-4 h-100 bg-light">
-                <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-truck-fast me-2"></i>Logistique & Port Sec</h6>
-                <p class="small text-secondary mb-0">Gestion centralisée du fret, raccordement au Port Sec et suivi en temps réel des flux de conteneurs.</p>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="p-3 border rounded-4 h-100 bg-light">
-                <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-id-card me-2"></i>Personnel & Badges</h6>
-                <p class="small text-secondary mb-0">Émission des badges d'accès biométriques, gestion des accréditations temporaires et conformité HSE.</p>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="p-3 border rounded-4 h-100 bg-light">
-                <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-file-shield me-2"></i>Documents & Quitus</h6>
-                <p class="small text-secondary mb-0">Génération de certificats officiels, authentification numérique et coffre-fort d'archivage.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal 3: Ecosystem Vision -->
-  <div class="modal fade" id="ecosystemModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">L'Écosystème Industriel GDIZ</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body p-4">
-          <p class="text-secondary small mb-3">
-            Située à Glo-Djigbé en République du Bénin, la GDIZ constitue un hub industriel de premier plan en Afrique de l'Ouest, focalisé sur la transformation locale et l'exportation.
-          </p>
-          <p class="text-secondary small mb-0">
-            <strong>GDIZ Portal</strong> incarne la plateforme digitale officielle connectant entreprises, logisticiens et services opérationnels dans un environnement moderne et transparent.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal 4: About -->
-  <div class="modal fade" id="aboutModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">À propos de GDIZ Portal</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body p-4">
-          <p class="text-secondary small mb-0">
-            GDIZ Portal (<strong>gdizportal.bj</strong>) est la porte d'entrée numérique unifiée de la Zone Industrielle de Glo-Djigbé (Zè-Bénin).
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/main.js"></script>
+    function setLang(lang) {
+      document.getElementById('title').innerHTML = texts[lang].title;
+      document.getElementById('desc').innerHTML = texts[lang].desc;
+      document.getElementById('cta').textContent = texts[lang].cta;
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+      document.documentElement.lang = lang;
+    }
+  </script>
 </body>
 </html>
