@@ -1,0 +1,1019 @@
+/* ==========================================================================
+   GDIZ PORTAL — Le portail numérique de l'écosystème industriel
+   Design System & Strict Single-Screen Stylesheet
+   Identity Colors based on official GDIZ logo
+   ========================================================================== */
+
+:root {
+  /* GDIZ Primary Brand Palette */
+  --gdiz-blue: #262879;
+  --gdiz-blue-dark: #1b1c59;
+  --gdiz-blue-deep: #12133b;
+  --gdiz-blue-light: #3d3fa8;
+  --gdiz-blue-subtle: #f0f3fa;
+  --gdiz-blue-glow: rgba(38, 40, 121, 0.15);
+
+  /* GDIZ Logo Accents (Chevron Colors) */
+  --gdiz-red: #ee463a;
+  --gdiz-red-subtle: rgba(238, 70, 58, 0.12);
+  --gdiz-orange: #f5a623;
+  --gdiz-yellow: #f2b310;
+  --gdiz-yellow-subtle: rgba(242, 179, 16, 0.12);
+  --gdiz-green: #10b981;
+
+  /* Neutral Foundation */
+  --white: #ffffff;
+  --bg-page: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-card-glass: rgba(255, 255, 255, 0.85);
+  --border-color: #e2e8f0;
+  --border-light: #edf2f7;
+  --border-active: rgba(38, 40, 121, 0.35);
+
+  /* Typography */
+  --text-main: #1e2040;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
+  --text-light: #a0aec0;
+
+  /* Elevations & Effects */
+  --shadow-sm: 0 2px 6px rgba(27, 28, 89, 0.05);
+  --shadow-md: 0 6px 18px rgba(27, 28, 89, 0.08);
+  --shadow-lg: 0 14px 32px rgba(27, 28, 89, 0.12);
+  --shadow-glow: 0 0 25px rgba(38, 40, 121, 0.2);
+  
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Viewport Reset — STRICT SINGLE-SCREEN DESKTOP */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden; /* Strict desktop rule */
+}
+
+/* Subtle Industrial Grid & Geometric Background */
+.page-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 90% 15%, rgba(242, 179, 16, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 80% 50%, rgba(238, 70, 58, 0.03) 0%, transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(38, 40, 121, 0.06) 0%, transparent 50%),
+    linear-gradient(135deg, #ffffff 0%, #f4f6fb 100%);
+}
+
+.bg-pattern-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(to right, rgba(38, 40, 121, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(38, 40, 121, 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(circle at 60% 40%, black 40%, transparent 85%);
+  -webkit-mask-image: radial-gradient(circle at 60% 40%, black 40%, transparent 85%);
+}
+
+/* Master App Container */
+.portal-app-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem 0.5rem 1.5rem;
+}
+
+/* ==========================================================================
+   1. HEADER SECTION
+   ========================================================================== */
+.site-header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-card-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 0 1.25rem;
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+
+.brand-container {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 0.85rem;
+}
+
+.brand-logo {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  transition: transform var(--transition-fast);
+}
+
+.brand-container:hover .brand-logo {
+  transform: scale(1.02);
+}
+
+.brand-divider {
+  width: 1px;
+  height: 24px;
+  background-color: var(--border-color);
+}
+
+.brand-tagline {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gdiz-blue);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.brand-tagline .portal-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--gdiz-red);
+}
+
+/* Navigation Links */
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-link-custom {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 0.35rem 0.65rem;
+  border-radius: 8px;
+  transition: all var(--transition-fast);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.nav-link-custom:hover, .nav-link-custom:focus {
+  color: var(--gdiz-blue);
+  background-color: var(--gdiz-blue-subtle);
+}
+
+/* Header Controls */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  background-color: #edf2f7;
+  padding: 2px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.lang-btn.active {
+  background-color: var(--white);
+  color: var(--gdiz-blue);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.btn-portal-login {
+  background-color: var(--gdiz-blue);
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.45rem 1.15rem;
+  border-radius: 10px;
+  border: 1px solid var(--gdiz-blue);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(38, 40, 121, 0.2);
+}
+
+.btn-portal-login:hover {
+  background-color: var(--gdiz-blue-dark);
+  color: var(--white);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(38, 40, 121, 0.3);
+}
+
+/* ==========================================================================
+   2. HERO VIEWPORT (MAIN CONTENT)
+   ========================================================================== */
+.hero-viewport {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  min-height: 0; /* Important for flex child no-scroll */
+  padding: 0.75rem 0;
+}
+
+.hero-grid {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Left Hero Column */
+.hero-content-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 1rem;
+}
+
+.ecosystem-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--gdiz-blue-subtle);
+  border: 1px solid rgba(38, 40, 121, 0.12);
+  padding: 0.3rem 0.85rem;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--gdiz-blue);
+  margin-bottom: 1rem;
+  width: fit-content;
+}
+
+.live-indicator {
+  position: relative;
+  display: inline-flex;
+  width: 8px;
+  height: 8px;
+}
+
+.live-indicator .pulse-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--gdiz-red);
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+.live-indicator .pulse-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--gdiz-red);
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  70% { transform: scale(2.4); opacity: 0; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+.hero-title {
+  font-size: clamp(1.85rem, 3vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.18;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.hero-title .highlight-ecosystem {
+  color: var(--gdiz-blue);
+  position: relative;
+  display: inline-block;
+}
+
+.hero-title .highlight-ecosystem::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gdiz-yellow) 0%, var(--gdiz-red) 100%);
+  border-radius: 2px;
+  opacity: 0.85;
+}
+
+.hero-subtitle {
+  font-size: clamp(0.92rem, 1.25vw, 1.08rem);
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  max-width: 540px;
+}
+
+/* Call to actions */
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-gdiz-primary {
+  background-color: var(--gdiz-blue);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: 12px;
+  border: 1px solid var(--gdiz-blue);
+  box-shadow: 0 4px 16px rgba(38, 40, 121, 0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all var(--transition-fast);
+}
+
+.btn-gdiz-primary:hover {
+  background-color: var(--gdiz-blue-dark);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(38, 40, 121, 0.35);
+}
+
+.btn-gdiz-outline {
+  background-color: var(--white);
+  color: var(--gdiz-blue);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 12px;
+  border: 1.5px solid var(--gdiz-blue);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all var(--transition-fast);
+}
+
+.btn-gdiz-outline:hover {
+  background-color: var(--gdiz-blue-subtle);
+  color: var(--gdiz-blue-dark);
+  border-color: var(--gdiz-blue-dark);
+  transform: translateY(-2px);
+}
+
+/* Trust & Architecture Badges */
+.hero-pill-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.feature-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border-color);
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.feature-pill i {
+  font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   3. HERO RIGHT COLUMN (INTERACTIVE INDUSTRIAL VISUAL COMPOSITION)
+   ========================================================================== */
+.hero-visual-col {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.ecosystem-stage {
+  width: 100%;
+  max-width: 520px;
+  height: 100%;
+  max-height: 380px;
+  background: var(--bg-card-glass);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(16px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* Ambient Visual Gradients in Stage */
+.stage-glow-left {
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(242, 179, 16, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.stage-glow-right {
+  position: absolute;
+  bottom: -40px;
+  right: -40px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(238, 70, 58, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Stage Header Bar */
+.stage-top-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px dashed var(--border-color);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.stage-badge-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--gdiz-blue);
+  background: var(--gdiz-blue-subtle);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.status-dot-green {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--gdiz-green);
+  display: inline-block;
+  box-shadow: 0 0 6px var(--gdiz-green);
+}
+
+/* Core Digital Hub Representation */
+.stage-center-diagram {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+/* SVG Connection Network Overlay */
+.network-svg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.network-line {
+  stroke: rgba(38, 40, 121, 0.2);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+  animation: dash-flow 20s linear infinite;
+}
+
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+
+/* Central Portal Core Box */
+.hub-center-core {
+  position: absolute;
+  z-index: 5;
+  background: linear-gradient(135deg, var(--gdiz-blue) 0%, var(--gdiz-blue-dark) 100%);
+  color: var(--white);
+  padding: 0.7rem 1.1rem;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(38, 40, 121, 0.35);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  transition: transform var(--transition-fast);
+  cursor: pointer;
+}
+
+.hub-center-core:hover {
+  transform: scale(1.04);
+}
+
+.hub-logo-mark {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--gdiz-yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  margin-bottom: 2px;
+}
+
+.hub-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.hub-sub {
+  font-size: 0.65rem;
+  opacity: 0.85;
+  margin: 0;
+}
+
+/* 3 Satellite Ecosystem Nodes */
+.satellite-node {
+  position: absolute;
+  z-index: 4;
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.55rem 0.75rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 125px;
+  transition: all var(--transition-smooth);
+  cursor: pointer;
+}
+
+.satellite-node:hover {
+  border-color: var(--gdiz-blue);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.node-top {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gdiz-blue);
+}
+
+.node-top i {
+  font-size: 0.85rem;
+}
+
+.node-tags {
+  font-size: 0.62rem;
+  color: var(--text-secondary);
+  line-height: 1.2;
+}
+
+/* Positioning Satellite Nodes */
+.node-entreprises {
+  top: 6%;
+  left: 6%;
+}
+.node-entreprises .node-top i {
+  color: var(--gdiz-yellow);
+}
+
+.node-logistique {
+  top: 6%;
+  right: 6%;
+}
+.node-logistique .node-top i {
+  color: var(--gdiz-red);
+}
+
+.node-services {
+  bottom: 4%;
+  right: 18%;
+}
+.node-services .node-top i {
+  color: var(--gdiz-blue);
+}
+
+.node-documents {
+  bottom: 4%;
+  left: 18%;
+}
+.node-documents .node-top i {
+  color: #0ea5e9;
+}
+
+/* Telemetry Mini Bar in Visual */
+.stage-bottom-telemetry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-light);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.telemetry-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.telemetry-item span.highlight {
+  font-weight: 700;
+  color: var(--gdiz-blue);
+}
+
+/* ==========================================================================
+   4. BOTTOM SERVICE BAR (5 ITEMS)
+   ========================================================================== */
+.service-bar-section {
+  flex-shrink: 0;
+  margin-bottom: 0.5rem;
+}
+
+.service-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.85rem;
+}
+
+.service-card-item {
+  background: var(--bg-card-glass);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.7rem 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: transparent;
+  transition: background var(--transition-fast);
+}
+
+.service-card-item:hover {
+  border-color: rgba(38, 40, 121, 0.4);
+  background: var(--white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.service-card-item:hover::before {
+  background: linear-gradient(to bottom, var(--gdiz-yellow), var(--gdiz-red));
+}
+
+.service-card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background-color: var(--gdiz-blue-subtle);
+  color: var(--gdiz-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.service-card-item:hover .service-card-icon {
+  background-color: var(--gdiz-blue);
+  color: var(--white);
+}
+
+.service-card-text {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.service-card-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.service-card-desc {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   5. COMPACT FOOTER (1 LINE)
+   ========================================================================== */
+.site-footer {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  padding: 0 0.5rem;
+  flex-shrink: 0;
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.footer-copy {
+  margin: 0;
+}
+
+.footer-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* ==========================================================================
+   6. INTERACTIVE MODALS (PORTAL LOGIN & SERVICE DETAILS)
+   ========================================================================== */
+.modal-content {
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.modal-header {
+  background-color: var(--gdiz-blue-subtle);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 1.5rem;
+}
+
+.modal-header .modal-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--gdiz-blue);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.portal-access-card {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: var(--text-main);
+  margin-bottom: 0.75rem;
+  transition: all var(--transition-fast);
+}
+
+.portal-access-card:hover {
+  border-color: var(--gdiz-blue);
+  background-color: var(--gdiz-blue-subtle);
+  transform: translateX(3px);
+  color: var(--gdiz-blue);
+}
+
+.portal-access-card .portal-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background-color: #edf2f7;
+  color: var(--gdiz-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  margin-right: 0.9rem;
+}
+
+/* ==========================================================================
+   7. RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+/* Medium Desktop / Laptops (1366x768 & 1440x900 optimization) */
+@media (max-width: 1400px) and (min-height: 700px) {
+  .hero-title {
+    font-size: 2.15rem;
+    margin-bottom: 0.75rem;
+  }
+  .hero-subtitle {
+    font-size: 0.92rem;
+    margin-bottom: 1.1rem;
+  }
+  .ecosystem-stage {
+    max-height: 330px;
+  }
+  .service-card-item {
+    padding: 0.55rem 0.7rem;
+  }
+}
+
+/* Small Laptop / Height constrained (<= 768px height) */
+@media (max-height: 780px) and (min-width: 992px) {
+  .portal-app-wrapper {
+    padding: 0.4rem 1.25rem 0.3rem 1.25rem;
+  }
+  .site-header {
+    height: 52px;
+  }
+  .brand-logo {
+    height: 32px;
+  }
+  .hero-title {
+    font-size: 1.95rem;
+    line-height: 1.15;
+    margin-bottom: 0.6rem;
+  }
+  .hero-subtitle {
+    font-size: 0.88rem;
+    margin-bottom: 0.9rem;
+    line-height: 1.45;
+  }
+  .hero-cta-group {
+    margin-bottom: 0.9rem;
+  }
+  .btn-gdiz-primary, .btn-gdiz-outline {
+    padding: 0.55rem 1.2rem;
+    font-size: 0.88rem;
+  }
+  .ecosystem-stage {
+    max-height: 300px;
+    padding: 0.85rem;
+  }
+  .satellite-node {
+    padding: 0.4rem 0.6rem;
+    min-width: 110px;
+  }
+  .service-card-item {
+    padding: 0.5rem 0.65rem;
+  }
+  .service-card-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Tablet & Mobile Screens */
+@media (max-width: 991px) {
+  html, body {
+    overflow-y: auto !important; /* Allow scroll smoothly on small screens */
+    height: auto;
+    min-height: 100%;
+  }
+  .portal-app-wrapper {
+    height: auto;
+    min-height: 100vh;
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+  .hero-content-col {
+    padding-right: 0;
+    text-align: center;
+    align-items: center;
+  }
+  .hero-subtitle {
+    max-width: 100%;
+  }
+  .hero-cta-group {
+    justify-content: center;
+  }
+  .hero-pill-badges {
+    justify-content: center;
+  }
+  .ecosystem-stage {
+    max-height: 320px;
+    margin: 0 auto;
+  }
+  .service-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .site-footer {
+    height: auto;
+    flex-direction: column;
+    gap: 0.4rem;
+    text-align: center;
+    padding: 1rem 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .service-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  .btn-gdiz-primary, .btn-gdiz-outline {
+    width: 100%;
+    justify-content: center;
+  }
+  .header-nav {
+    display: none; /* Accessible in mobile offcanvas or simplified */
+  }
+}
