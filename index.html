@@ -7,410 +7,314 @@
   
   <!-- SEO Meta Tags -->
   <title>GDIZ Portal — Le portail numérique de l'écosystème industriel</title>
-  <meta name="description" content="GDIZ Portal est la plateforme numérique unifiée pour accéder aux services, démarches et opérations de la Zone Industrielle de Glo-Djigbé (Zè-Bénin).">
-  <meta name="keywords" content="GDIZ, GDIZ Portal, Glo-Djigbé, Zone Industrielle, Bénin, Écosystème Industriel, Guichet Unique, Logistique, Port Sec">
+  <meta name="description" content="GDIZ Portal est la porte d'entrée numérique unique de la Zone Industrielle de Glo-Djigbé (Zè-Bénin).">
   <meta name="author" content="GDIZ Portal">
   <link rel="canonical" href="https://gdizportal.bj/">
 
-  <!-- Open Graph / Social Media -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://gdizportal.bj/">
-  <meta property="og:title" content="GDIZ Portal — L'Écosystème Industriel d'Excellence">
-  <meta property="og:description" content="La plateforme numérique unifiée pour accéder aux services, démarches et opérations de la Zone Industrielle de Glo-Djigbé.">
+  <meta property="og:title" content="GDIZ Portal — Écosystème Industriel">
+  <meta property="og:description" content="Plateforme numérique de l'écosystème industriel de Glo-Djigbé.">
   <meta property="og:image" content="https://gdizportal.bj/assets/img/gdiz-logo.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="icon" type="image/png" href="assets/img/gdiz-logo.png">
 
-  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Bootstrap 5 CSS (for grid and modals) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Custom Stylesheet -->
+  <!-- Custom Minimalist Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <!-- Ambient Background Structure -->
-  <div class="page-background">
-    <div class="bg-pattern-grid"></div>
-  </div>
+  <div class="page-background"></div>
 
-  <!-- Single Screen Viewport Container -->
+  <!-- Master Single-Screen Layout -->
   <div class="portal-app-wrapper">
 
-    <!-- 1. COMPACT & CHIC SITE HEADER -->
+    <!-- 1. MINIMAL HEADER -->
     <header class="site-header">
-      <a href="/" class="brand-container" title="GDIZ Portal — Accueil">
-        <img src="assets/img/gdiz-logo.png" alt="Logo GDIZ Glo-Djigbé Industrial Zone" class="brand-logo">
-        <div class="brand-divider"></div>
-        <span class="brand-tagline">
-          <span data-i18n="brand_tag">PORTAIL OFFICIEL</span>
-          <span class="portal-dot"></span>
-        </span>
+      <a href="/" class="brand-container" title="GDIZ Portal">
+        <img src="assets/img/gdiz-logo.png" alt="GDIZ" class="brand-logo">
       </a>
 
       <!-- Navigation Links -->
       <ul class="header-nav">
         <li>
-          <button type="button" class="nav-link-custom" data-bs-toggle="modal" data-bs-target="#servicesModal">
-            <i class="fa-solid fa-layer-group"></i>
-            <span data-i18n="nav_services">Services</span>
+          <button type="button" class="nav-link-custom" data-bs-toggle="modal" data-bs-target="#servicesModal" data-i18n="nav_services">
+            Services
           </button>
         </li>
         <li>
-          <button type="button" class="nav-link-custom" data-bs-toggle="modal" data-bs-target="#ecosystemModal">
-            <i class="fa-solid fa-cubes"></i>
-            <span data-i18n="nav_ecosystem">Écosystème</span>
+          <button type="button" class="nav-link-custom" data-bs-toggle="modal" data-bs-target="#ecosystemModal" data-i18n="nav_ecosystem">
+            Écosystème
           </button>
         </li>
         <li>
-          <button type="button" class="nav-link-custom" data-bs-toggle="modal" data-bs-target="#aboutModal">
-            <i class="fa-solid fa-circle-info"></i>
-            <span data-i18n="nav_about">À propos</span>
+          <button type="button" class="nav-link-custom" data-bs-toggle="modal" data-bs-target="#aboutModal" data-i18n="nav_about">
+            À propos
           </button>
         </li>
       </ul>
 
-      <!-- Controls & Login -->
+      <!-- Controls -->
       <div class="header-actions">
-        <div class="lang-switch" role="group" aria-label="Sélecteur de langue">
-          <button type="button" class="lang-btn active" data-lang="fr" aria-label="Français">FR</button>
-          <button type="button" class="lang-btn" data-lang="en" aria-label="English">EN</button>
+        <div class="lang-switch">
+          <button type="button" class="lang-btn active" data-lang="fr">FR</button>
+          <span class="text-muted">/</span>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
         </div>
         <button type="button" class="btn-portal-login" data-bs-toggle="modal" data-bs-target="#loginModal">
-          <i class="fa-solid fa-shield-halved"></i>
-          <span data-i18n="btn_login">Espace Sécurisé</span>
+          <i class="fa-solid fa-lock"></i>
+          <span data-i18n="btn_login">Connexion</span>
         </button>
       </div>
     </header>
 
-    <!-- 2. HERO VIEWPORT (BALANCED, ULTRA CHIC) -->
+    <!-- 2. HERO VIEWPORT (PURIFIED & IMPACTFUL) -->
     <main class="hero-viewport">
       <div class="hero-grid">
         
-        <!-- Left Hero Column -->
+        <!-- Left: Pure & Prestigious Content -->
         <div class="hero-content-col">
-          <div class="ecosystem-badge">
-            <span class="live-indicator">
-              <span class="pulse-ring"></span>
-              <span class="pulse-dot"></span>
-            </span>
-            <span data-i18n="badge">GLO-DJIGBÉ INDUSTRIAL ZONE • BÉNIN</span>
+          <div class="tag-label">
+            <span class="tag-dot"></span>
+            <span data-i18n="tag_label">PORTAIL NUMÉRIQUE OFFICIEL</span>
           </div>
 
           <h1 class="hero-title">
             <span data-i18n-title-part1>L'Écosystème Industriel </span>
-            <span class="highlight-ecosystem" data-i18n-title-highlight>d'Excellence</span>
+            <span class="title-accent" data-i18n-title-highlight>de Demain</span>
           </h1>
 
           <p class="hero-subtitle" data-i18n="hero_desc">
-            La plateforme numérique unifiée pour accéder aux services, démarches et opérations de la Zone Industrielle de Glo-Djigbé.
+            La porte d'entrée numérique unifiée pour accéder aux services, démarches et opérations de la Zone Industrielle de Glo-Djigbé.
           </p>
 
           <div class="hero-cta-group">
-            <button type="button" class="btn-gdiz-primary" data-bs-toggle="modal" data-bs-target="#servicesModal">
-              <i class="fa-solid fa-arrow-right-to-bracket"></i>
+            <button type="button" class="btn-minimal-primary" data-bs-toggle="modal" data-bs-target="#servicesModal">
               <span data-i18n="cta_primary">Accéder aux services</span>
+              <i class="fa-solid fa-arrow-right"></i>
             </button>
-            <button type="button" class="btn-gdiz-outline" data-bs-toggle="modal" data-bs-target="#ecosystemModal">
-              <i class="fa-solid fa-circle-nodes"></i>
+            <button type="button" class="btn-minimal-secondary" data-bs-toggle="modal" data-bs-target="#ecosystemModal">
               <span data-i18n="cta_secondary">Découvrir l'écosystème</span>
             </button>
           </div>
-
-          <div class="hero-pill-badges">
-            <div class="feature-pill">
-              <i class="fa-solid fa-shield-halved text-primary"></i>
-              <span data-i18n="badge_guichet">Guichet Unique Numérique</span>
-            </div>
-            <div class="feature-pill">
-              <i class="fa-solid fa-bolt text-warning"></i>
-              <span data-i18n="badge_demat">100% Dématérialisé</span>
-            </div>
-            <div class="feature-pill">
-              <i class="fa-solid fa-network-wired text-danger"></i>
-              <span data-i18n="badge_hub">Hub Logistique Connecté</span>
-            </div>
-          </div>
         </div>
 
-        <!-- Right Hero Column (Industrial Digital Ecosystem Stage) -->
+        <!-- Right: Minimalist Digital Gateway Card -->
         <div class="hero-visual-col">
-          <div class="ecosystem-stage">
-            <div class="stage-glow-left"></div>
-            <div class="stage-glow-right"></div>
-
-            <!-- Stage Top Meta -->
-            <div class="stage-top-meta">
-              <span><i class="fa-solid fa-satellite-dish me-1"></i> GDIZ CORE NETWORK</span>
-              <span class="stage-badge-live">
-                <span class="status-dot-green"></span>
-                <span data-i18n="live_status">PLATEFORME EN LIGNE</span>
-              </span>
+          <div class="minimal-portal-card">
+            
+            <div class="card-top-row">
+              <div class="portal-emblem">
+                <i class="fa-solid fa-cube text-primary"></i>
+                <span>GDIZ PORTAL</span>
+              </div>
+              <div class="status-badge">
+                <span class="status-dot"></span>
+                <span data-i18n="status_online">EN LIGNE</span>
+              </div>
             </div>
 
-            <!-- Center Diagram with SVG Lines -->
-            <div class="stage-center-diagram">
-              <svg class="network-svg-layer" viewBox="0 0 480 260" preserveAspectRatio="none">
-                <!-- Dynamic dashed connection lines -->
-                <line x1="95" y1="45" x2="240" y2="130" class="network-line" />
-                <line x1="385" y1="45" x2="240" y2="130" class="network-line" />
-                <line x1="135" y1="215" x2="240" y2="130" class="network-line" />
-                <line x1="345" y1="215" x2="240" y2="130" class="network-line" />
-              </svg>
-
-              <!-- Central GDIZ Core Node -->
-              <div class="hub-center-core" data-bs-toggle="modal" data-bs-target="#ecosystemModal">
-                <div class="hub-logo-mark">
-                  <i class="fa-solid fa-cube"></i> GDIZ PORTAL
+            <!-- Pillars List -->
+            <div class="portal-pillars-list">
+              <div class="pillar-row-item" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="entreprises">
+                <div class="pillar-left">
+                  <i class="fa-solid fa-building"></i>
+                  <span data-i18n="card1_title">Entreprises & Investisseurs</span>
                 </div>
-                <h4 class="hub-title">E-ECOSYSTEM</h4>
-                <p class="hub-sub" data-i18n="hub_sub">PLATEFORME DIGITALE</p>
+                <i class="fa-solid fa-arrow-up-right-from-square pillar-arrow"></i>
               </div>
 
-              <!-- Satellite Node 1: Entreprises -->
-              <div class="satellite-node node-entreprises" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="entreprises">
-                <div class="node-top">
-                  <i class="fa-solid fa-building-user"></i>
-                  <span data-i18n="node_ent_title">Entreprises</span>
+              <div class="pillar-row-item" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="logistique">
+                <div class="pillar-left">
+                  <i class="fa-solid fa-truck-fast"></i>
+                  <span data-i18n="card2_title">Logistique & Port Sec</span>
                 </div>
-                <span class="node-tags" data-i18n="node_ent_tags">Guichet & Implantation</span>
+                <i class="fa-solid fa-arrow-up-right-from-square pillar-arrow"></i>
               </div>
 
-              <!-- Satellite Node 2: Logistique -->
-              <div class="satellite-node node-logistique" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="logistique">
-                <div class="node-top">
-                  <i class="fa-solid fa-truck-ramp-box"></i>
-                  <span data-i18n="node_log_title">Logistique</span>
-                </div>
-                <span class="node-tags" data-i18n="node_log_tags">Port Sec & Transit</span>
-              </div>
-
-              <!-- Satellite Node 3: Documents -->
-              <div class="satellite-node node-documents" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="documents">
-                <div class="node-top">
+              <div class="pillar-row-item" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="documents">
+                <div class="pillar-left">
                   <i class="fa-solid fa-file-shield"></i>
-                  <span data-i18n="node_doc_title">Documents</span>
+                  <span data-i18n="card4_title">Guichet & Documents</span>
                 </div>
-                <span class="node-tags" data-i18n="node_doc_tags">Certificats & Quitus</span>
+                <i class="fa-solid fa-arrow-up-right-from-square pillar-arrow"></i>
               </div>
 
-              <!-- Satellite Node 4: Services -->
-              <div class="satellite-node node-services" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="personnel">
-                <div class="node-top">
-                  <i class="fa-solid fa-id-card-clip"></i>
-                  <span data-i18n="node_srv_title">Opérations</span>
+              <div class="pillar-row-item" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="personnel">
+                <div class="pillar-left">
+                  <i class="fa-solid fa-id-card"></i>
+                  <span data-i18n="card3_title">Badges & Personnel</span>
                 </div>
-                <span class="node-tags" data-i18n="node_srv_tags">Badges & Sécurité</span>
+                <i class="fa-solid fa-arrow-up-right-from-square pillar-arrow"></i>
               </div>
             </div>
 
-            <!-- Stage Bottom Telemetry -->
-            <div class="stage-bottom-telemetry">
-              <div class="telemetry-item">
-                <i class="fa-solid fa-location-dot text-danger"></i>
-                <span data-i18n="telemetry_loc">GLO-DJIGBÉ, BÉNIN</span>
-              </div>
-              <div class="telemetry-item">
-                <i class="fa-solid fa-shield-check text-primary"></i>
-                <span class="highlight" data-i18n="telemetry_sys">SYSTÈME OPÉRATIONNEL</span>
-              </div>
+            <div class="card-bottom-row">
+              <span><i class="fa-solid fa-location-dot me-1 text-danger"></i> Glo-Djigbé, Bénin</span>
+              <span class="text-primary font-monospace">v1.0 • Sécurisé</span>
             </div>
+
           </div>
         </div>
 
       </div>
     </main>
 
-    <!-- 3. COMPACT & LUXURY HORIZONTAL SERVICE BAR (5 ITEMS) -->
+    <!-- 3. MINIMAL SERVICE PILLS BAR -->
     <section class="service-bar-section">
-      <div class="service-cards-grid">
+      <div class="service-pills-grid">
         
-        <!-- Card 1: Entreprises -->
-        <div class="service-card-item" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="entreprises">
-          <div class="service-card-icon">
-            <i class="fa-solid fa-industry"></i>
-          </div>
-          <div class="service-card-text">
-            <h6 class="service-card-title" data-i18n="card1_title">Entreprises</h6>
-            <p class="service-card-desc" data-i18n="card1_desc">Guichet & Implantation</p>
+        <div class="service-pill-item" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="entreprises">
+          <i class="fa-solid fa-industry service-pill-icon"></i>
+          <div class="service-pill-content">
+            <span class="service-pill-title" data-i18n="pill1_title">Entreprises</span>
+            <span class="service-pill-sub" data-i18n="pill1_sub">Guichet unique</span>
           </div>
         </div>
 
-        <!-- Card 2: Logistique -->
-        <div class="service-card-item" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="logistique">
-          <div class="service-card-icon">
-            <i class="fa-solid fa-truck-fast"></i>
-          </div>
-          <div class="service-card-text">
-            <h6 class="service-card-title" data-i18n="card2_title">Logistique</h6>
-            <p class="service-card-desc" data-i18n="card2_desc">Port Sec & Fret</p>
+        <div class="service-pill-item" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="logistique">
+          <i class="fa-solid fa-truck service-pill-icon"></i>
+          <div class="service-pill-content">
+            <span class="service-pill-title" data-i18n="pill2_title">Logistique</span>
+            <span class="service-pill-sub" data-i18n="pill2_sub">Transit & fret</span>
           </div>
         </div>
 
-        <!-- Card 3: Personnel -->
-        <div class="service-card-item" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="personnel">
-          <div class="service-card-icon">
-            <i class="fa-solid fa-id-card-clip"></i>
-          </div>
-          <div class="service-card-text">
-            <h6 class="service-card-title" data-i18n="card3_title">Personnel</h6>
-            <p class="service-card-desc" data-i18n="card3_desc">Badges & Démarches</p>
+        <div class="service-pill-item" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="personnel">
+          <i class="fa-solid fa-user-shield service-pill-icon"></i>
+          <div class="service-pill-content">
+            <span class="service-pill-title" data-i18n="pill3_title">Personnel</span>
+            <span class="service-pill-sub" data-i18n="pill3_sub">Badges d'accès</span>
           </div>
         </div>
 
-        <!-- Card 4: Documents -->
-        <div class="service-card-item" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="documents">
-          <div class="service-card-icon">
-            <i class="fa-solid fa-file-shield"></i>
-          </div>
-          <div class="service-card-text">
-            <h6 class="service-card-title" data-i18n="card4_title">Documents</h6>
-            <p class="service-card-desc" data-i18n="card4_desc">Certificats & Quitus</p>
+        <div class="service-pill-item" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="documents">
+          <i class="fa-solid fa-file-lines service-pill-icon"></i>
+          <div class="service-pill-content">
+            <span class="service-pill-title" data-i18n="pill4_title">Documents</span>
+            <span class="service-pill-sub" data-i18n="pill4_sub">Certificats officiels</span>
           </div>
         </div>
 
-        <!-- Card 5: Support -->
-        <div class="service-card-item" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="support">
-          <div class="service-card-icon">
-            <i class="fa-solid fa-headset"></i>
-          </div>
-          <div class="service-card-text">
-            <h6 class="service-card-title" data-i18n="card5_title">Support</h6>
-            <p class="service-card-desc" data-i18n="card5_desc">Assistance & Guichet</p>
+        <div class="service-pill-item" data-bs-toggle="modal" data-bs-target="#servicesModal" data-service-category="support">
+          <i class="fa-solid fa-circle-question service-pill-icon"></i>
+          <div class="service-pill-content">
+            <span class="service-pill-title" data-i18n="pill5_title">Support</span>
+            <span class="service-pill-sub" data-i18n="pill5_sub">Assistance 24/7</span>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- 4. INSTITUTIONAL 1-LINE FOOTER -->
+    <!-- 4. PURE FOOTER -->
     <footer class="site-footer">
-      <p class="footer-copy" data-i18n="footer_text">
-        © 2026 GDIZ Portal — Le portail numérique de l'écosystème industriel
-      </p>
-      <div class="footer-meta">
-        <span data-i18n="footer_zone"><i class="fa-solid fa-location-dot"></i> Glo-Djigbé Industrial Zone, Zè-Bénin</span>
-      </div>
+      <span data-i18n="footer_copy">© 2026 GDIZ Portal — Le portail numérique de l'écosystème industriel</span>
+      <span>Glo-Djigbé Industrial Zone • Zè-Bénin</span>
     </footer>
 
   </div>
 
   <!-- ==========================================================================
-       MODALS — SINGLE SCREEN FRIENDLY INTERFACES
+       MODALS
        ========================================================================== -->
 
   <!-- Modal 1: Login Gateway -->
-  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="loginModalLabel">
-            <i class="fa-solid fa-shield-halved text-primary"></i>
-            Espace d'authentification GDIZ Portal
-          </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title">Espace d'authentification</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
-          <p class="text-secondary small mb-3">Sélectionnez votre espace pour accéder aux démarches numériques sécurisées :</p>
+          <p class="text-secondary small mb-3">Accédez à votre espace dédié :</p>
           
-          <a href="#" class="portal-access-card" onclick="alert('Portail en cours de déploiement.'); return false;">
-            <div class="d-flex align-items-center">
-              <div class="portal-icon"><i class="fa-solid fa-building"></i></div>
-              <div>
-                <strong class="d-block text-dark">Portail Entreprises & Investisseurs</strong>
-                <small class="text-muted">Guichet unique, agréments & démarches</small>
+          <div class="d-flex flex-column gap-2">
+            <a href="#" class="pillar-row-item py-3" onclick="alert('Portail en cours de déploiement.'); return false;">
+              <div class="pillar-left">
+                <i class="fa-solid fa-building text-primary"></i>
+                <div>
+                  <strong class="d-block">Espace Entreprises & Investisseurs</strong>
+                  <small class="text-muted">Démarches & Guichet unique</small>
+                </div>
               </div>
-            </div>
-            <i class="fa-solid fa-chevron-right text-muted"></i>
-          </a>
+              <i class="fa-solid fa-chevron-right text-muted"></i>
+            </a>
 
-          <a href="#" class="portal-access-card" onclick="alert('Portail en cours de déploiement.'); return false;">
-            <div class="d-flex align-items-center">
-              <div class="portal-icon"><i class="fa-solid fa-truck"></i></div>
-              <div>
-                <strong class="d-block text-dark">Portail Opérateurs & Logistique</strong>
-                <small class="text-muted">Port sec, transit, douanes & fret</small>
+            <a href="#" class="pillar-row-item py-3" onclick="alert('Portail en cours de déploiement.'); return false;">
+              <div class="pillar-left">
+                <i class="fa-solid fa-truck text-primary"></i>
+                <div>
+                  <strong class="d-block">Espace Logistique & Opérateurs</strong>
+                  <small class="text-muted">Port sec, transit & fret</small>
+                </div>
               </div>
-            </div>
-            <i class="fa-solid fa-chevron-right text-muted"></i>
-          </a>
+              <i class="fa-solid fa-chevron-right text-muted"></i>
+            </a>
 
-          <a href="#" class="portal-access-card" onclick="alert('Portail en cours de déploiement.'); return false;">
-            <div class="d-flex align-items-center">
-              <div class="portal-icon"><i class="fa-solid fa-id-badge"></i></div>
-              <div>
-                <strong class="d-block text-dark">Portail Personnel & Visiteurs</strong>
-                <small class="text-muted">Badges d'accès, démarches administratives</small>
+            <a href="#" class="pillar-row-item py-3" onclick="alert('Portail en cours de déploiement.'); return false;">
+              <div class="pillar-left">
+                <i class="fa-solid fa-id-badge text-primary"></i>
+                <div>
+                  <strong class="d-block">Espace Personnel & Badges</strong>
+                  <small class="text-muted">Accès site & autorisations</small>
+                </div>
               </div>
-            </div>
-            <i class="fa-solid fa-chevron-right text-muted"></i>
-          </a>
+              <i class="fa-solid fa-chevron-right text-muted"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Modal 2: Services Explorer -->
-  <div class="modal fade" id="servicesModal" tabindex="-1" aria-labelledby="servicesModalLabel" aria-hidden="true">
+  <div class="modal fade" id="servicesModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="servicesModalLabel">
-            <i class="fa-solid fa-cubes-stacked text-primary"></i>
-            Catalogue des Services Numériques
-          </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title">Catalogue des Services Numériques</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
           <div class="row g-3">
             <div class="col-md-6">
               <div class="p-3 border rounded-3 h-100 bg-light">
-                <h6 class="fw-bold text-primary"><i class="fa-solid fa-industry me-2"></i>Services Entreprises</h6>
-                <ul class="small text-secondary ps-3 mb-0">
-                  <li>Guichet unique d'implantation</li>
-                  <li>Suivi des demandes d'agrément</li>
-                  <li>Démarches administratives et fiscales</li>
-                </ul>
+                <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-building me-2"></i>Entreprises & Investisseurs</h6>
+                <p class="small text-secondary mb-0">Accompagnement, guichet unique d'implantation, demandes d'agrément et formalités fiscales.</p>
               </div>
             </div>
             <div class="col-md-6">
               <div class="p-3 border rounded-3 h-100 bg-light">
-                <h6 class="fw-bold text-danger"><i class="fa-solid fa-truck-ramp-box me-2"></i>Opérations & Logistique</h6>
-                <ul class="small text-secondary ps-3 mb-0">
-                  <li>Gestion des entrées / sorties de fret</li>
-                  <li>Raccordement au Port Sec</li>
-                  <li>Suivi des flux de conteneurs</li>
-                </ul>
+                <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-truck-fast me-2"></i>Logistique & Port Sec</h6>
+                <p class="small text-secondary mb-0">Gestion et suivi des flux de conteneurs, transit douanier et planification des transports.</p>
               </div>
             </div>
             <div class="col-md-6">
               <div class="p-3 border rounded-3 h-100 bg-light">
-                <h6 class="fw-bold text-dark"><i class="fa-solid fa-id-card-clip me-2"></i>Personnel & Badges</h6>
-                <ul class="small text-secondary ps-3 mb-0">
-                  <li>Demandes de badges d'accès biométriques</li>
-                  <li>Enregistrement des visiteurs et prestataires</li>
-                  <li>Espace de conformité sécurité HSE</li>
-                </ul>
+                <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-id-card me-2"></i>Personnel & Badges</h6>
+                <p class="small text-secondary mb-0">Demandes de badges d'accès biométriques, déclaration des intervenants et sécurité HSE.</p>
               </div>
             </div>
             <div class="col-md-6">
               <div class="p-3 border rounded-3 h-100 bg-light">
-                <h6 class="fw-bold text-info"><i class="fa-solid fa-file-shield me-2"></i>Gestion Documentaire & Quitus</h6>
-                <ul class="small text-secondary ps-3 mb-0">
-                  <li>Attestations et certificats officiels</li>
-                  <li>Vérification d'authenticité numérique</li>
-                  <li>Archivage sécurisé des dossiers</li>
-                </ul>
+                <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-file-shield me-2"></i>Documents & Quitus</h6>
+                <p class="small text-secondary mb-0">Délivrance de certificats officiels, authentification numérique et coffre-fort documentaire.</p>
               </div>
             </div>
           </div>
@@ -420,63 +324,43 @@
   </div>
 
   <!-- Modal 3: Ecosystem Vision -->
-  <div class="modal fade" id="ecosystemModal" tabindex="-1" aria-labelledby="ecosystemModalLabel" aria-hidden="true">
+  <div class="modal fade" id="ecosystemModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="ecosystemModalLabel">
-            <i class="fa-solid fa-circle-nodes text-primary"></i>
-            L'Écosystème Industriel Numérique GDIZ
-          </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title">L'Écosystème Industriel GDIZ</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
-          <p class="text-secondary small">
-            Située à Glo-Djigbé en République du Bénin, la GDIZ constitue un pôle industriel stratégique de transformation locale et d'exportation internationale.
+          <p class="text-secondary small mb-3">
+            Située à Glo-Djigbé au Bénin, la GDIZ est une zone industrielle intégrée de classe mondiale dédiée à la transformation locale et au commerce international.
           </p>
-          <p class="text-secondary small">
-            <strong>GDIZ Portal</strong> incarne la porte d'entrée numérique unique reliant industriels, partenaires logistiques, services opérationnels et institutions dans un environnement digital sécurisé, performant et interconnecté.
+          <p class="text-secondary small mb-0">
+            <strong>GDIZ Portal</strong> constitue l'infrastructure numérique unifiée permettant aux entreprises et partenaires d'interagir en toute simplicité et sécurité avec les services de la zone.
           </p>
-          <div class="p-3 bg-light rounded-3 border">
-            <div class="d-flex align-items-center gap-2 mb-1">
-              <i class="fa-solid fa-microchip text-primary"></i>
-              <strong class="small text-dark">Intégration & Digitalisation</strong>
-            </div>
-            <p class="small text-muted mb-0">Dématérialisation complète des démarches industrielles et logistiques.</p>
-          </div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Modal 4: About -->
-  <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+  <div class="modal fade" id="aboutModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="aboutModalLabel">
-            <i class="fa-solid fa-circle-info text-primary"></i>
-            À propos de GDIZ Portal
-          </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title">À propos</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
           <p class="text-secondary small">
-            GDIZ Portal (<strong>gdizportal.bj</strong>) est la plateforme numérique officielle de l'écosystème industriel de la Zone Industrielle de Glo-Djigbé (Zè-Bénin).
+            GDIZ Portal (<strong>gdizportal.bj</strong>) est le portail numérique officiel de l'écosystème industriel de la Zone Industrielle de Glo-Djigbé (Zè-Bénin).
           </p>
-          <div class="small text-muted border-top pt-2">
-            <div><strong>Domaine officiel :</strong> https://gdizportal.bj</div>
-            <div><strong>Architecture :</strong> Static Single-Screen Gateway</div>
-          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Bootstrap 5 JS Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-  <!-- Custom Main JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

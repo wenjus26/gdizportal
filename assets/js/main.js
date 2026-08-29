@@ -1,102 +1,69 @@
 /**
- * GDIZ PORTAL — Main JavaScript Engine
- * Interactions, Dynamic Localization (FR/EN), and Ecosystem Visual Logic
+ * GDIZ PORTAL — Main JavaScript Engine (Minimalist & Clean)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Translations Dictionary - Ultra Chic & Concise
   const i18n = {
     fr: {
-      badge: "GLO-DJIGBÉ INDUSTRIAL ZONE • BÉNIN",
-      brand_tag: "PORTAIL OFFICIEL",
+      tag_label: "PORTAIL NUMÉRIQUE OFFICIEL",
       nav_services: "Services",
       nav_ecosystem: "Écosystème",
       nav_about: "À propos",
-      btn_login: "Espace Sécurisé",
+      btn_login: "Connexion",
       hero_title_part1: "L'Écosystème Industriel ",
-      hero_title_highlight: "d'Excellence",
-      hero_desc: "La plateforme numérique unifiée pour accéder aux services, démarches et opérations de la Zone Industrielle de Glo-Djigbé.",
+      hero_title_highlight: "de Demain",
+      hero_desc: "La porte d'entrée numérique unifiée pour accéder aux services, démarches et opérations de la Zone Industrielle de Glo-Djigbé.",
       cta_primary: "Accéder aux services",
       cta_secondary: "Découvrir l'écosystème",
-      badge_guichet: "Guichet Unique Numérique",
-      badge_demat: "100% Dématérialisé",
-      badge_hub: "Hub Logistique Connecté",
-      // Visual Nodes
-      hub_sub: "PLATEFORME DIGITALE",
-      node_ent_title: "Entreprises",
-      node_ent_tags: "Guichet & Implantation",
-      node_log_title: "Logistique",
-      node_log_tags: "Port Sec & Transit",
-      node_srv_title: "Opérations",
-      node_srv_tags: "Badges & Sécurité",
-      node_doc_title: "Documents",
-      node_doc_tags: "Certificats & Quitus",
-      live_status: "PLATEFORME EN LIGNE",
-      telemetry_loc: "GLO-DJIGBÉ, BÉNIN",
-      telemetry_sys: "SYSTÈME OPÉRATIONNEL",
-      // Service Cards
-      card1_title: "Entreprises",
-      card1_desc: "Guichet & Implantation",
-      card2_title: "Logistique",
-      card2_desc: "Port Sec & Fret",
-      card3_title: "Personnel",
-      card3_desc: "Badges & Démarches",
-      card4_title: "Documents",
-      card4_desc: "Certificats & Quitus",
-      card5_title: "Support",
-      card5_desc: "Assistance & Guichet",
-      // Footer
-      footer_text: "© 2026 GDIZ Portal — Le portail numérique de l'écosystème industriel",
-      footer_zone: "Glo-Djigbé Industrial Zone, Zè-Bénin"
+      status_online: "EN LIGNE",
+      card1_title: "Entreprises & Investisseurs",
+      card2_title: "Logistique & Port Sec",
+      card3_title: "Badges & Personnel",
+      card4_title: "Guichet & Documents",
+      pill1_title: "Entreprises",
+      pill1_sub: "Guichet unique",
+      pill2_title: "Logistique",
+      pill2_sub: "Transit & fret",
+      pill3_title: "Personnel",
+      pill3_sub: "Badges d'accès",
+      pill4_title: "Documents",
+      pill4_sub: "Certificats officiels",
+      pill5_title: "Support",
+      pill5_sub: "Assistance 24/7",
+      footer_copy: "© 2026 GDIZ Portal — Le portail numérique de l'écosystème industriel"
     },
     en: {
-      badge: "GLO-DJIGBÉ INDUSTRIAL ZONE • BENIN",
-      brand_tag: "OFFICIAL PORTAL",
+      tag_label: "OFFICIAL DIGITAL PORTAL",
       nav_services: "Services",
       nav_ecosystem: "Ecosystem",
       nav_about: "About",
-      btn_login: "Secure Access",
+      btn_login: "Sign In",
       hero_title_part1: "The Industrial Ecosystem ",
-      hero_title_highlight: "of Excellence",
+      hero_title_highlight: "of Tomorrow",
       hero_desc: "The unified digital gateway to access services, procedures, and industrial operations at Glo-Djigbé Industrial Zone.",
       cta_primary: "Access Services",
       cta_secondary: "Explore Ecosystem",
-      badge_guichet: "Single Digital Window",
-      badge_demat: "100% Paperless",
-      badge_hub: "Connected Logistics Hub",
-      // Visual Nodes
-      hub_sub: "DIGITAL PLATFORM",
-      node_ent_title: "Enterprises",
-      node_ent_tags: "Single Window & Setup",
-      node_log_title: "Logistics",
-      node_log_tags: "Dry Port & Freight",
-      node_srv_title: "Operations",
-      node_srv_tags: "Access Passes & Safety",
-      node_doc_title: "Documents",
-      node_doc_tags: "Certificates & Clearances",
-      live_status: "PLATFORM ONLINE",
-      telemetry_loc: "GLO-DJIGBÉ, BENIN",
-      telemetry_sys: "SYSTEM OPERATIONAL",
-      // Service Cards
-      card1_title: "Enterprises",
-      card1_desc: "Setup & Single Window",
-      card2_title: "Logistics",
-      card2_desc: "Dry Port & Freight",
-      card3_title: "Workforce",
-      card3_desc: "Passes & Clearance",
-      card4_title: "Documents",
-      card4_desc: "Certificates & Vault",
-      card5_title: "Support",
-      card5_desc: "Helpdesk & Assistance",
-      // Footer
-      footer_text: "© 2026 GDIZ Portal — The digital gateway to the industrial ecosystem",
-      footer_zone: "Glo-Djigbé Industrial Zone, Zè-Benin"
+      status_online: "ONLINE",
+      card1_title: "Enterprises & Investors",
+      card2_title: "Logistics & Dry Port",
+      card3_title: "Access Passes & Staff",
+      card4_title: "Single Window & Docs",
+      pill1_title: "Enterprises",
+      pill1_sub: "Single Window",
+      pill2_title: "Logistics",
+      pill2_sub: "Transit & Freight",
+      pill3_title: "Workforce",
+      pill3_sub: "Access Passes",
+      pill4_title: "Documents",
+      pill4_sub: "Certificates & Vault",
+      pill5_title: "Support",
+      pill5_sub: "24/7 Helpdesk",
+      footer_copy: "© 2026 GDIZ Portal — The digital gateway to the industrial ecosystem"
     }
   };
 
   let currentLang = 'fr';
 
-  // Language Switcher Logic
   const langButtons = document.querySelectorAll('.lang-btn');
   langButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -127,43 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (titlePart1 && titleHighlight) {
       titlePart1.textContent = texts.hero_title_part1;
       titleHighlight.textContent = texts.hero_title_highlight;
-    }
-  }
-
-  // Interactive Visual Node Interactivity
-  const nodes = document.querySelectorAll('.satellite-node, .hub-center-core');
-  nodes.forEach(node => {
-    node.addEventListener('mouseenter', () => {
-      const lines = document.querySelectorAll('.network-line');
-      lines.forEach(line => {
-        line.style.stroke = 'var(--gdiz-blue)';
-        line.style.strokeWidth = '2.5';
-      });
-    });
-    node.addEventListener('mouseleave', () => {
-      const lines = document.querySelectorAll('.network-line');
-      lines.forEach(line => {
-        line.style.stroke = 'rgba(38, 40, 121, 0.22)';
-        line.style.strokeWidth = '1.5';
-      });
-    });
-  });
-
-  // Modal Service Focus helper
-  const serviceCards = document.querySelectorAll('.service-card-item');
-  serviceCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const targetCategory = card.getAttribute('data-service-category');
-      if (targetCategory) {
-        highlightServiceInModal(targetCategory);
-      }
-    });
-  });
-
-  function highlightServiceInModal(category) {
-    const modalTab = document.querySelector(`[data-tab-target="${category}"]`);
-    if (modalTab) {
-      modalTab.click();
     }
   }
 
