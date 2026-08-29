@@ -4,197 +4,344 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GDIZ Portal — Le portail numérique de l'écosystème industriel</title>
-  <meta name="description" content="GDIZ Portal — La plateforme numérique officielle de la Zone Industrielle de Glo-Djigbé.">
+  <meta name="description" content="GDIZ Portal — La plateforme numérique officielle de la Zone Industrielle de Glo-Djigbé, Zè-Bénin.">
   <link rel="canonical" href="https://gdizportal.bj/">
   <meta property="og:url" content="https://gdizportal.bj/">
   <meta property="og:title" content="GDIZ Portal">
   <meta property="og:image" content="https://gdizportal.bj/assets/img/gdiz-logo.png">
   <link rel="icon" type="image/png" href="assets/img/gdiz-logo.png">
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
+    /* ─── Reset ─────────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --gdiz-blue:   #302F7F;
-      --gdiz-yellow: #F0B310;
-      --gdiz-red:    #EF463B;
-      --gdiz-green:  #00A950;
+      --blue:   #302F7F;
+      --blue-d: #1E1D5C;
+      --yellow: #F0B310;
+      --red:    #EF463B;
+      --green:  #00A950;
+      --white:  #FFFFFF;
+      --ink:    #0F172A;
+      --muted:  #64748B;
+      --border: #E2E8F0;
     }
 
     html, body {
       width: 100%; height: 100%;
       font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
-      background: #ffffff;
-      color: #0F172A;
-      overflow: hidden;
       -webkit-font-smoothing: antialiased;
+      color: var(--ink);
+      background: var(--white);
     }
 
-    /* Subtle dot grid */
-    body::before {
-      content: '';
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background-image: radial-gradient(rgba(48,47,127,0.06) 1px, transparent 1px);
-      background-size: 28px 28px;
+    /* ─── Full viewport wrapper ──────────────────────────────────────── */
+    .page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
     }
 
-    /* Full-screen centered flex container */
-    .screen {
-      position: relative; z-index: 1;
-      width: 100%; height: 100vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      padding: 2rem;
-      gap: 0;
+    /* ─── Top bar ────────────────────────────────────────────────────── */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--border);
     }
 
-    /* Logo */
-    .logo {
-      width: 220px;
-      margin-bottom: 2.5rem;
-    }
-
-    /* Divider accent */
-    .accent-bar {
-      width: 48px; height: 3px;
-      background: linear-gradient(90deg, var(--gdiz-yellow), var(--gdiz-red));
-      margin-bottom: 1.75rem;
-    }
-
-    /* Headline */
-    h1 {
-      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      text-align: center;
-      line-height: 1.15;
-      color: var(--gdiz-blue);
-      margin-bottom: 1rem;
-    }
-
-    /* Sub-text */
-    p {
-      font-size: clamp(0.95rem, 1.3vw, 1.1rem);
-      font-weight: 500;
-      color: #475569;
-      text-align: center;
-      max-width: 520px;
-      line-height: 1.6;
-      margin-bottom: 2.25rem;
-    }
-
-    /* CTA Button — sharp with offset shadow */
-    .btn-cta {
-      background: var(--gdiz-yellow);
-      color: #0F172A;
-      font-size: 0.95rem;
-      font-weight: 800;
-      letter-spacing: 0.01em;
-      padding: 0.8rem 2.25rem;
-      border: 1.5px solid #0F172A;
-      box-shadow: 4px 4px 0px #0F172A;
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.14s ease;
-    }
-
-    .btn-cta:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0px #0F172A;
-      background: #f8c025;
-      color: #000;
-    }
-
-    /* Lang switcher — top right */
     .lang-toggle {
-      position: fixed; top: 1.25rem; right: 1.5rem;
-      display: flex; border: 1px solid #CBD5E1;
-      font-size: 0.73rem; font-weight: 700; z-index: 10;
+      display: flex;
+      border: 1px solid #CBD5E1;
+      overflow: hidden;
+      font-size: 0.72rem;
+      font-weight: 700;
     }
 
     .lang-btn {
       background: none; border: none;
-      padding: 4px 10px; cursor: pointer;
-      color: #64748B; transition: all 0.15s;
+      padding: 5px 12px; cursor: pointer;
+      color: var(--muted); transition: all 0.15s;
+      line-height: 1;
     }
 
-    .lang-btn.active { background: var(--gdiz-blue); color: #fff; }
-
-    /* Footer line */
-    footer {
-      position: fixed; bottom: 0; left: 0; right: 0;
-      padding: 0.6rem 1.5rem;
-      display: flex; align-items: center; justify-content: space-between;
-      font-size: 0.7rem; color: #94A3B8;
-      border-top: 1px solid #E2E8F0;
-      background: #ffffff;
+    .lang-btn.active {
+      background: var(--blue);
+      color: var(--white);
     }
 
-    /* Mobile */
-    @media (max-width: 580px) {
-      html, body { overflow-y: auto; }
-      .screen { height: auto; min-height: 100vh; padding: 4rem 1.5rem 5rem; }
-      .logo { width: 180px; }
+    /* ─── Hero center ────────────────────────────────────────────────── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 2rem;
+      position: relative;
+    }
+
+    /* Decorative background stripes inspired by GDIZ chevron */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg,
+          rgba(240,179,16,.04) 0%,
+          transparent 40%
+        ),
+        linear-gradient(225deg,
+          rgba(239,70,59,.04) 0%,
+          transparent 40%
+        );
+      pointer-events: none;
+    }
+
+    /* Subtle dot grid */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(48,47,127,.055) 1px, transparent 1px);
+      background-size: 26px 26px;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* Logo — full display, no crop */
+    .logo-wrap {
+      background: var(--white);
+      padding: 1.25rem 2rem;
+      border: 1px solid var(--border);
+      box-shadow: 4px 4px 0 rgba(48,47,127,.08);
+      margin-bottom: 2.5rem;
+      display: inline-block;
+    }
+
+    .logo-wrap img {
+      display: block;
+      width: 240px;   /* fixed width that fits full logo 331×152 */
+      height: auto;   /* keep aspect ratio — never cuts logo */
+      object-fit: contain;
+    }
+
+    /* 4-color accent bar matching logo chevron */
+    .stripe-bar {
+      display: flex;
+      width: 240px;
+      height: 4px;
+      margin-bottom: 2.25rem;
+      overflow: hidden;
+    }
+
+    .stripe-bar span {
+      flex: 1;
+    }
+
+    .s1 { background: var(--yellow); }
+    .s2 { background: var(--red);    }
+    .s3 { background: var(--green);  }
+    .s4 { background: var(--blue);   }
+
+    /* Headline */
+    h1 {
+      font-size: clamp(1.65rem, 3.8vw, 2.8rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.13;
+      color: var(--blue);
+      margin-bottom: 1.15rem;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--ink);
+    }
+
+    /* Sub-text */
+    .desc {
+      font-size: clamp(0.92rem, 1.5vw, 1.08rem);
+      font-weight: 500;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.65;
+      margin-bottom: 2.75rem;
+    }
+
+    /* Status pill */
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      border: 1px solid var(--border);
+      background: #F8FAFC;
+      padding: 0.4rem 1rem;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .live-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 3px rgba(0,169,80,.18);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 2px rgba(0,169,80,.2); }
+      50%      { box-shadow: 0 0 0 6px rgba(0,169,80,0);  }
+    }
+
+    /* ─── Bottom footer bar ──────────────────────────────────────────── */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 0.85rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .footer-dots {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .footer-dots span {
+      width: 8px; height: 8px;
+      display: inline-block;
+    }
+
+    .fd-y { background: var(--yellow); }
+    .fd-r { background: var(--red);    }
+    .fd-g { background: var(--green);  }
+    .fd-b { background: var(--blue);   }
+
+    /* ─── Responsive ─────────────────────────────────────────────────── */
+    @media (max-width: 480px) {
+      .logo-wrap img { width: 190px; }
+      .stripe-bar { width: 190px; }
+      .topbar { padding: 0.85rem 1.25rem; }
+      .hero { padding: 2.5rem 1.25rem; }
+      .site-footer { padding: 0.75rem 1.25rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Language Switcher -->
-  <div class="lang-toggle">
-    <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
-    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+<div class="page">
+
+  <!-- Top bar: only language switcher -->
+  <div class="topbar">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn"        data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
   </div>
 
-  <!-- Single Screen -->
-  <div class="screen">
-    <img src="assets/img/gdiz-logo.png" alt="GDIZ Logo" class="logo">
+  <!-- Hero: full center -->
+  <main class="hero">
+    <div class="hero-inner">
 
-    <div class="accent-bar"></div>
+      <!-- Logo in white bordered card — never cropped -->
+      <div class="logo-wrap">
+        <img
+          src="assets/img/gdiz-logo.png"
+          alt="GDIZ — Glo-Djigbé Industrial Zone, Zè-Bénin"
+        >
+      </div>
 
-    <h1 id="title">Le portail numérique<br>de l'écosystème industriel</h1>
+      <!-- 4-color stripe (yellow / red / green / blue from logo) -->
+      <div class="stripe-bar">
+        <span class="s1"></span>
+        <span class="s2"></span>
+        <span class="s3"></span>
+        <span class="s4"></span>
+      </div>
 
-    <p id="desc">Accédez aux services, démarches et opérations<br>de la Zone Industrielle de Glo-Djigbé.</p>
+      <!-- Headline -->
+      <h1 id="title">
+        <em>Le portail numérique</em><br>
+        de l'écosystème industriel
+      </h1>
 
-    <a href="#" class="btn-cta" onclick="alert('Plateforme en cours de déploiement.'); return false;">
-      <span id="cta">Accéder aux services</span>
-      <i class="fa-solid fa-arrow-right"></i>
-    </a>
-  </div>
+      <!-- Short description -->
+      <p class="desc" id="desc">
+        La plateforme numérique officielle de la Zone Industrielle de Glo-Djigbé — Zè-Bénin.
+      </p>
+
+      <!-- Status pill -->
+      <div class="status-pill">
+        <span class="live-dot"></span>
+        <span id="status">Plateforme en cours de déploiement</span>
+      </div>
+
+    </div>
+  </main>
 
   <!-- Footer -->
-  <footer>
-    <span>© 2026 GDIZ Portal</span>
+  <footer class="site-footer">
+    <span>© 2026 GDIZ Portal — gdizportal.bj</span>
+    <div class="footer-dots">
+      <span class="fd-y"></span>
+      <span class="fd-r"></span>
+      <span class="fd-g"></span>
+      <span class="fd-b"></span>
+    </div>
     <span>Glo-Djigbé Industrial Zone • Zè-Bénin</span>
   </footer>
 
-  <script>
-    const texts = {
-      fr: {
-        title: 'Le portail numérique<br>de l\'écosystème industriel',
-        desc: 'Accédez aux services, démarches et opérations<br>de la Zone Industrielle de Glo-Djigbé.',
-        cta: 'Accéder aux services'
-      },
-      en: {
-        title: 'The digital gateway<br>to the industrial ecosystem',
-        desc: 'Access services, procedures and operations<br>at Glo-Djigbé Industrial Zone.',
-        cta: 'Access Services'
-      }
-    };
+</div>
 
-    function setLang(lang) {
-      document.getElementById('title').innerHTML = texts[lang].title;
-      document.getElementById('desc').innerHTML = texts[lang].desc;
-      document.getElementById('cta').textContent = texts[lang].cta;
-      document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-      document.documentElement.lang = lang;
+<script>
+  const t = {
+    fr: {
+      title:  '<em>Le portail numérique</em><br>de l\'écosystème industriel',
+      desc:   'La plateforme numérique officielle de la Zone Industrielle de Glo-Djigbé — Zè-Bénin.',
+      status: 'Plateforme en cours de déploiement'
+    },
+    en: {
+      title:  '<em>The digital gateway</em><br>to the industrial ecosystem',
+      desc:   'The official digital platform of Glo-Djigbé Industrial Zone — Zè, Benin.',
+      status: 'Platform under deployment'
     }
-  </script>
+  };
+
+  function setLang(lang) {
+    document.getElementById('title').innerHTML  = t[lang].title;
+    document.getElementById('desc').textContent = t[lang].desc;
+    document.getElementById('status').textContent = t[lang].status;
+    document.querySelectorAll('.lang-btn').forEach(b =>
+      b.classList.toggle('active', b.dataset.lang === lang)
+    );
+    document.documentElement.lang = lang;
+  }
+</script>
+
 </body>
 </html>
