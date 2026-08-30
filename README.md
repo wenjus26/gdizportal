@@ -1,41 +1,87 @@
-# GDIZ Portal — Le portail numérique de l'écosystème industriel
+# GDIZ Portal
 
-Site officiel : [https://gdizportal.bj](https://gdizportal.bj)
+> **Le portail numérique de la Zone Industrielle de Glo-Djigbé — Zè-Bénin**  
+> **The digital platform of Glo-Djigbé Industrial Zone — Zè, Benin**
 
-Plateforme numérique conçue pour simplifier et centraliser l'accès aux services, démarches et informations de l'écosystème industriel de la Zone Industrielle de Glo-Djigbé (Zè-Bénin).
-
----
-
-## Identité Visuelle & Conception
-
-- **Couleur dominante** : Bleu Institutionnel GDIZ (`#262879`)
-- **Accents de marque** : Rouge GDIZ (`#EE463A`) & Ambre/Orange (`#F2B310`)
-- **Architecture** : Single-screen static landing page (aucun scroll vertical sur ordinateur de bureau)
-- **Typographie** : *Plus Jakarta Sans* & *Inter*
-- **Technologies** : HTML5, CSS3, Bootstrap 5, Font Awesome, JavaScript Vanilla
+🌐 **[gdizportal.bj](https://gdizportal.bj)**
 
 ---
 
-## Structure des Fichiers
+## À propos / About
 
-```text
+Page d'accueil statique officielle du portail GDIZ.  
+Single-screen static landing page for the GDIZ digital portal.
+
+- Bilingue **FR / EN** — deux sections HTML indépendantes, aucun texte mélangé
+- Responsive — mobile, tablette, desktop
+- Zéro dépendance externe côté serveur — HTML / CSS / JS vanilla
+
+---
+
+## Identité visuelle / Brand
+
+| Couleur | Hex | Rôle |
+|--------|-----|------|
+| GDIZ Blue | `#302F7F` | Dominant |
+| GDIZ Yellow | `#F0B310` | Accent |
+| GDIZ Red | `#EF463B` | Accent |
+| GDIZ Green | `#00A950` | Accent |
+
+**Typographie :** Plus Jakarta Sans (Google Fonts)
+
+---
+
+## Structure
+
+```
 gdizportal/
-├── index.html          # Page d'accueil single-screen
-├── 404.html            # Page d'erreur personnalisée
-├── CNAME               # Configuration du domaine personnalisé gdizportal.bj
-├── README.md           # Documentation du projet
+├── index.html                  # Landing page FR / EN
+├── 404.html                    # Page d'erreur personnalisée
+├── CNAME                       # Domaine custom → gdizportal.bj
+├── README.md
 └── assets/
     ├── css/
-    │   └── style.css   # Feuille de styles et responsive design
+    │   └── style.css
     ├── js/
-    │   └── main.js     # Logique d'interaction, i18n bilingue (FR/EN)
-    └── img/
-        ├── gdiz-logo.png # Logo officiel GDIZ
-        └── favicon.svg   # Favicon haute résolution
+    │   └── main.js
+    ├── img/
+    │   └── gdiz-logo.png       # Logo officiel GDIZ (331×152 RGBA)
+    └── favicon/
+        ├── favicon.ico
+        ├── favicon-16x16.png
+        ├── favicon-32x32.png
+        ├── apple-touch-icon.png
+        ├── android-chrome-192x192.png
+        ├── android-chrome-512x512.png
+        └── site.webmanifest
 ```
 
 ---
 
-## Déploiement
+## Déploiement / Deployment
 
-Le site est hébergé statiquement via **GitHub Pages** couplé à **Cloudflare** avec le nom de domaine `gdizportal.bj`.
+| Composant | Valeur |
+|-----------|--------|
+| Hébergement | GitHub Pages — branche `main` |
+| CDN / DNS | Cloudflare |
+| Domaine | `gdizportal.bj` |
+| CNAME | `www.gdizportal.bj` → `wenjus26.github.io` |
+
+**Pousser une mise à jour :**
+
+```bash
+git add -A
+git commit -m "feat: description du changement"
+git push origin main
+```
+
+---
+
+## Langue / Language toggle
+
+Le sélecteur **FR / EN** en haut à droite affiche/masque deux sections HTML entièrement distinctes.  
+Par défaut, la page s'ouvre en **anglais (EN)**.
+
+---
+
+© 2026 GDIZ Portal — [gdizportal.bj](https://gdizportal.bj)
